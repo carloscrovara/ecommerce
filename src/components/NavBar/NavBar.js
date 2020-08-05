@@ -19,7 +19,7 @@ const NavBar = () => {
                     <a className="nav-link" href="#about">Quiénes Somos</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#carrito">Login</a>
+                    <a className="nav-link" href="#login">Login</a>
                 </li>                
                 </ul>
             </div>
