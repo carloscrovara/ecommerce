@@ -1,19 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Salute from './components/Salute/Salute'; 
-import NavBar from './components/NavBar/NavBar';
-
+import NavBar from './components/NavBar';
+import Home from './components/Home';
 
 function App() {
   return (
-    <div>
+    <>
       <NavBar />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Salute />
-      </header>
-    </div>
+      <Home greeting="¡Bienvenidos a la Tienda de Carlos!"/>
+    </>
   );
 }
 
