@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <Home greeting="¡Bienvenidos a la Tienda de Carlos!"/>
+      <Home greeting="¡Bienvenidos a Tortas Ugita! | Productos artesanales al mejor precio y calidad."/>
     </>
   );
 }
