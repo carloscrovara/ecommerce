@@ -29,6 +29,7 @@ function ItemCount({ initial, min, max, onAdd}) {
                         <input className="form-control col-sm-1 text-center" value={value} type="number"/>
                         <button type="button" className="btn btn-light" onClick={sumar}><ion-icon name="add-outline"></ion-icon></button>
                     </div>
+                    <hr />
                     <div className="section" style={{ paddingBottom: '20px', paddingTop: '20px' }}>
                         <button className="btn btn-success" onClick={onAdd}>
                             <ion-icon name="cart" style={{ marginRight: '20px' }} aria-hidden="true"></ion-icon> 

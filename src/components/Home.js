@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import ItemList from './ItemList';
+import Item from './Item';
 
-function Home({ greeting }) {
+function Home({greeting}) {
     const containerBienvenida = {
         backgroundColor: '#009688',
         color: 'white'        
-    }     
-    return (       
+    }
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        Item().then(res => {
+            setProducts(res); // Set state -> Render
+            setLoading(false); // Set state -> Render
+    });
+    }, []);
+
+    return (
         <>
             <section className="text-center" style={containerBienvenida}>
                 <div className="row py-lg-3">
@@ -14,9 +25,11 @@ function Home({ greeting }) {
                         <p className="lead">Productos artesanales al mejor precio y calidad.</p>
                     </div>
                 </div>
-            </section>          
-        </>
-    )
+            </section>         
+            { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando listado de productos destacados...</p>}
+            <ItemList products={products}/>
+            </>
+        )
 }
 
 export default Home;
