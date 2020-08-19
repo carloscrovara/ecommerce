@@ -15,6 +15,6 @@ export default function Item() {
             { id: 5, name: 'Chocopie', img:`${chocopie}`, description:'Lorem ipsum dolor sit amet, consectetur adipiscing elitnt ut labore et dolore magna aliqua.', price: 670},
             { id: 6, name: 'Lemon Pie', img:`${lemonpie}`, description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ua.', price: 890},
             ]);
-        }, 2000);
+        }, 3000);
     });
 }

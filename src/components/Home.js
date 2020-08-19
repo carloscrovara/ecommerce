@@ -26,7 +26,7 @@ function Home({greeting}) {
                     </div>
                 </div>
             </section>         
-            { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando listado de productos destacados...</p>}
+            { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando listado de productos destacados...</p> }
             <ItemList products={products}/>
             </>
         )
