@@ -1,10 +1,12 @@
 import React from 'react';
 import ItemDetailContainer from './ItemDetailContainer';
+import { useParams } from "react-router-dom";
 
 function ItemDetail() {      
+    const { id } = useParams();      
     return (
         <>
-            <ItemDetailContainer valueIdItem={2} />
+            <ItemDetailContainer id={id} />
         </>
     )
 }

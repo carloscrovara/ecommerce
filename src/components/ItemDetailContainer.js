@@ -40,18 +40,16 @@ function ItemDetailLayout ({ id, src, name, price, description }) {
     )
 }
 
-function ItemDetailContainer({ valueIdItem }) {
-    const [product, setProducts] = useState([]);
+function ItemDetailContainer({id}) {
+    const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         Item().then(res => {
-            let filteredRes = res.filter( (p) => p.id === valueIdItem )
-            console.log(filteredRes);
-            setProducts(filteredRes[0]); 
+            let filteredRes = res.filter( (p) => p.id === id )
+            setProduct(filteredRes[0]); 
             setLoading(false);
-            console.log(product)
     });
-    }, [product, valueIdItem]);
+    }, [product, id]);
     
     return (
         <>
