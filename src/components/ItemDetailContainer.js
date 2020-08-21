@@ -51,12 +51,15 @@ function ItemDetailContainer({id}) {
         Item().then(res => {
             let filteredRes = res.filter( (p) => p.id === id )
             setProduct(filteredRes[0]); 
-            setLoading(false);
-            return function cleanup() {
-                console.log("cleaned up");
-            };                              
+            setLoading(false);                           
     });
     }, [id]);
+
+    useEffect(() => {
+        return function cleanup() {
+            console.log("cleaned up");
+        };         
+    }, []);  
     
     return (
         <>

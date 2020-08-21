@@ -12,9 +12,15 @@ function Home({greeting}) {
     useEffect(() => {
         Item().then(res => {
             setProducts(res); // Set state -> Render
-            setLoading(false); // Set state -> Render
+            setLoading(false); // Set state -> Render            
     });
     }, []);
+
+    useEffect(() => {
+        return function cleanup() {
+            console.log("cleaned up");
+        };         
+    }, []);  
 
     return (
         <>

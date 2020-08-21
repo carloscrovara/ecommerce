@@ -27,12 +27,15 @@ function ItemListCategoryContainer({categoryId}) {
     useEffect(() => {
         Item().then(res => {
             setProduct(res); 
-            setLoading(false);
-            return function cleanup() {
-                console.log("cleaned up");
-            };              
+            setLoading(false);             
     });
     }, [categoryId]);
+
+    useEffect(() => {
+        return function cleanup() {
+            console.log("cleaned up");
+        };         
+    }, []);    
     
     return (
         <>
