@@ -6,7 +6,7 @@ function ItemDetail() {
     const { id } = useParams();      
     return (
         <>
-            <ItemDetailContainer id={id} />
+            <ItemDetailContainer id= {id} />
         </>
     )
 }

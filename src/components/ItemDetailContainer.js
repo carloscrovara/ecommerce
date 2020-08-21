@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import ItemCount from './ItemCount';
 import Item from './Item';
+import { Link } from 'react-router-dom';
 
-function ItemDetailLayout ({ id, src, name, price, description }) {
+function ItemDetailLayout ({ id, src, name, price, description, linkId }) {
     return (
         <>
             <div className="container text-center" style={{ marginTop: '30px', marginBottom: '30px'}} key={id}>
@@ -30,11 +31,14 @@ function ItemDetailLayout ({ id, src, name, price, description }) {
                                     onAdd={function onAdd() {
                                         console.log("Se agregó al carrito " + name)
                                     }} 
-                                />        
+                                /> 
                             </div> 
                         </aside> 
-                    </div>
-                </div>        
+                    </div> 
+                </div>
+
+                <Link className="btn btn-info" to={linkId} style={{ marginBottom: '5px', marginTop: '25px'}}>Volver a Home</Link>        
+            
             </div>
         </>
     )
@@ -60,7 +64,8 @@ function ItemDetailContainer({id}) {
                     src={product.img}
                     name={product.name}
                     price={product.price}
-                    description={product.description}                    
+                    description={product.description} 
+                    linkId={`/`}                   
             /> }
         </>
     )

@@ -43,8 +43,8 @@ function NavBar() {
                                 Productos
                             </a>
                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a className="dropdown-item" href="#tortas">Tortas</a>
-                                    <a className="dropdown-item" href="#tartas">Tartas</a>
+                                    <Link className="dropdown-item" to="/categories/tortas">Tortas</Link>
+                                    <Link className="dropdown-item" to="/categories/tartas">Tartas</Link>
                                 </div>
                         </li>
                     </ul>
