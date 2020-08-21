@@ -1,16 +1,17 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
-function ItemListLayout({ id, src, name, price, masInfo }) {
+function ItemListLayout({ id, src, name, price, linkId }) {
     return (
         <>
             <div className="col" style={{ paddingBottom: "20px" }} key={id}>
                 <div className="card shadow-sm">
                     <img src={src} className="card-img-top" style={{ height: "320px" }} alt="product"/>
                     <div className="card-body">
-                        <h2 className="card-title" id={id}>{name}</h2>
+                        <h2 className="card-title">{name}</h2>
                         <div className="text-center">
                             <h3 className="card-title pricing-card-title" style={{ color: "#ff7043" }}>$ {price}</h3>
-                            <a href="#product"className="btn btn-success" onClick={masInfo}>Más información</a>
+                            <Link className="btn btn-success" to={linkId}>Más información</Link>
                         </div>
                     </div>
                 </div>
@@ -29,12 +30,9 @@ export default function ItemList({ products }) {
                             <ItemListLayout
                                 key={p.id}
                                 src={p.img}
-                                id={p.id}
                                 name={p.name}
                                 price={p.price}
-                                masInfo={function masInfo() {
-                                    console.log("Va a página con el detalle del producto " + p.name)
-                                }}
+                                linkId={`/item/${p.id}`}
                             />
                         ))}
                     </div>

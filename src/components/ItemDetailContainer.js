@@ -15,7 +15,7 @@ function ItemDetailLayout ({ id, src, name, price, description }) {
                         </aside>
                         <aside className="col-sm-6">    
                             <div className="col-xs-5" style={{paddingTop: '20px'}}>
-                                <h2 id={id}>{name}</h2>    
+                                <h2>{name}</h2>    
                                 <h3 style={{marginTop: '0px', color: '#ff7044' }}>$ {price}</h3>
                                 <dl className="item-property" style={{backgroundColor: '#f5f5f5'}}>     
                                     <dd>
@@ -48,7 +48,8 @@ function ItemDetailContainer({ valueIdItem }) {
             setProducts(res); 
             setLoading(false);
     });
-    }, []);     
+    }, []);
+    
     return (
         <>
             { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando detalle de producto...</p> }
@@ -57,7 +58,6 @@ function ItemDetailContainer({ valueIdItem }) {
                 <ItemDetailLayout
                     key={filteredProduct.id}
                     src={filteredProduct.img}
-                    id={filteredProduct.id}
                     name={filteredProduct.name}
                     price={filteredProduct.price}
                     description={filteredProduct.description}                    

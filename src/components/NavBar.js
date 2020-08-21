@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CartIcon from './CartIcon';
 import logo from '../assets/logo.png';
 
@@ -6,9 +7,9 @@ function NavBar() {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="#home">
+                <Link className="navbar-brand" to={`/`}>
                     <img src={logo} style={{ height: 80 }} alt="logo"/>
-                </a>
+                </Link>
 
                 <button 
                     className="navbar-toggler" 
@@ -24,10 +25,10 @@ function NavBar() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="#home">Home</a>
+                            <Link className="nav-link" to={`/`}>Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#about">Quiénes Somos</a>
+                            <Link className="nav-link" to={`/about`}>Quiénes Somos</Link>
                         </li>
                         <li className="nav-item dropdown">
                             <a  

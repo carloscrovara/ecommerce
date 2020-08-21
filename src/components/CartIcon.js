@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function CartIcon() {
     return (
         <>
             <ul className="navbar-nav mr-auto">
                 <li>
-                    <a className="nav-link" href="#carrito">
+                    <Link className="nav-link" to={`/cart`}>
                         <ion-icon name="cart" style={{ fontSize: 25 }}></ion-icon> 
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </>
