@@ -7,16 +7,10 @@ function ItemDetail() {
     
     useEffect(() => {
         console.log('Received id to', id)
-        return () => {
-            console.log('Will change id to', id);
-        };           
-    }, [id]);
-
-    useEffect(() => {
         return function cleanup() {
             console.log("cleaned up");
-        };         
-    }, []);     
+        };          
+    }, [id]);    
 
     return (
         <>

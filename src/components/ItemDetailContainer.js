@@ -48,18 +48,16 @@ function ItemDetailContainer({id}) {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
+        console.log('App mounted')        
         Item().then(res => {
             let filteredRes = res.filter( (p) => p.id === id )
             setProduct(filteredRes[0]); 
-            setLoading(false);                           
-    });
-    }, [id]);
-
-    useEffect(() => {
+            setLoading(false);                                        
+        });
         return function cleanup() {
             console.log("cleaned up");
-        };         
-    }, []);  
+        };     
+    }, [id]);
     
     return (
         <>

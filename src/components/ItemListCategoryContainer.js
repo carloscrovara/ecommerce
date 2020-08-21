@@ -25,17 +25,15 @@ function ItemListCategoryContainer({categoryId}) {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
+        console.log('App mounted')   
         Item().then(res => {
             setProduct(res); 
-            setLoading(false);             
-    });
-    }, [categoryId]);
-
-    useEffect(() => {
+            setLoading(false);                           
+        });
         return function cleanup() {
             console.log("cleaned up");
-        };         
-    }, []);    
+        };     
+    }, [categoryId]);
     
     return (
         <>
