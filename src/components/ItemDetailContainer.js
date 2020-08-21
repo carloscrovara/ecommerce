@@ -16,8 +16,8 @@ function ItemDetailLayout ({ id, src, name, price, description }) {
                         <aside className="col-sm-6">    
                             <div className="col-xs-5" style={{paddingTop: '20px'}}>
                                 <h2>{name}</h2>    
-                                <h3 style={{marginTop: '0px', color: '#ff7044' }}>$ {price}</h3>
-                                <dl className="item-property" style={{backgroundColor: '#f5f5f5'}}>     
+                                <h3 style={{marginTop: '0px', color: '#FF7044' }}>$ {price}</h3>
+                                <dl className="item-property" style={{backgroundColor: '#F5F5F5'}}>     
                                     <dd>
                                         <p style={{ padding: '10px'}}>{description}</p>
                                     </dd>
@@ -41,12 +41,15 @@ function ItemDetailLayout ({ id, src, name, price, description }) {
 }
 
 function ItemDetailContainer({ valueIdItem }) {
-    const [products, setProducts] = useState([]);
+    const [product, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         Item().then(res => {
-            setProducts(res); 
+            let filteredRes = res.filter( (p) => p.id === valueIdItem )
+            console.log(filteredRes);
+            setProducts(filteredRes[0]); 
             setLoading(false);
+            console.log(product)
     });
     }, []);
     
@@ -54,15 +57,13 @@ function ItemDetailContainer({ valueIdItem }) {
         <>
             { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando detalle de producto...</p> }
             
-            {products.filter((p, idx) => p.id === valueIdItem).map(filteredProduct =>  (
-                <ItemDetailLayout
-                    key={filteredProduct.id}
-                    src={filteredProduct.img}
-                    name={filteredProduct.name}
-                    price={filteredProduct.price}
-                    description={filteredProduct.description}                    
-                />
-            ))}  
+            { !loading && <ItemDetailLayout
+                    key={product.id}
+                    src={product.img}
+                    name={product.name}
+                    price={product.price}
+                    description={product.description}                    
+            /> }
         </>
     )
 }

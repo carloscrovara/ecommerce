@@ -1,11 +1,10 @@
 import React from 'react';
 import ItemDetailContainer from './ItemDetailContainer';
-//comentario
 
 function ItemDetail() {      
     return (
         <>
-            <ItemDetailContainer valueIdItem={1} />
+            <ItemDetailContainer valueIdItem={2} />
         </>
     )
 }
