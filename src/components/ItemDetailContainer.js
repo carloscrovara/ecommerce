@@ -51,7 +51,7 @@ function ItemDetailContainer({ valueIdItem }) {
             setLoading(false);
             console.log(product)
     });
-    }, []);
+    }, [product, valueIdItem]);
     
     return (
         <>
