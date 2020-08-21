@@ -52,8 +52,11 @@ function ItemDetailContainer({id}) {
             let filteredRes = res.filter( (p) => p.id === id )
             setProduct(filteredRes[0]); 
             setLoading(false);
+            return function cleanup() {
+                console.log("cleaned up");
+            };                              
     });
-    }, [product, id]);
+    }, [id]);
     
     return (
         <>

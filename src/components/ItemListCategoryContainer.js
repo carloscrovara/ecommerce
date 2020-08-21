@@ -21,15 +21,18 @@ function ItemListCategoryLayout({ id, category, src, name, price, linkId }) {
     )
 }
 
-function ItemCategoryListContainer({categoryId}) {
+function ItemListCategoryContainer({categoryId}) {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         Item().then(res => {
             setProduct(res); 
             setLoading(false);
+            return function cleanup() {
+                console.log("cleaned up");
+            };              
     });
-    }, [product, categoryId]);
+    }, [categoryId]);
     
     return (
         <>
@@ -56,4 +59,4 @@ function ItemCategoryListContainer({categoryId}) {
     )
 }
 
-export default ItemCategoryListContainer;
+export default ItemListCategoryContainer;
