@@ -3,7 +3,7 @@ import ItemCount from './ItemCount';
 import Item from './Item';
 import { Link } from 'react-router-dom';
 
-function ItemDetailLayout ({ id, src, name, price, description, linkId }) {
+function ItemDetailLayout ({ id, category, src, name, price, description, linkId }) {
     return (
         <>
             <div className="container text-center" style={{ marginTop: '30px', marginBottom: '30px'}} key={id}>
@@ -37,7 +37,7 @@ function ItemDetailLayout ({ id, src, name, price, description, linkId }) {
                     </div> 
                 </div>
 
-                <Link className="btn btn-info" to={linkId} style={{ marginBottom: '5px', marginTop: '25px'}}>Volver a Home</Link>        
+                <Link className="btn btn-info" to={linkId} style={{ marginBottom: '5px', marginTop: '25px'}}>Volver al listado de {category}</Link>        
             
             </div>
         </>
@@ -61,15 +61,16 @@ function ItemDetailContainer({id}) {
     
     return (
         <>
-            { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando detalle de producto...</p> }
+            { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando detalle del producto...</p> }
             
             { !loading && <ItemDetailLayout
-                    key={product.id}
-                    src={product.img}
-                    name={product.name}
-                    price={product.price}
-                    description={product.description} 
-                    linkId={`/`}                   
+                key={product.id}
+                src={product.img}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                category={product.categoryId}
+                linkId={`/categories/${product.categoryId}`}                   
             /> }
         </>
     )

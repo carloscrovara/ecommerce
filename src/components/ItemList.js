@@ -6,11 +6,17 @@ function ItemListLayout({ id, src, name, price, linkId }) {
         <>
             <div className="col" style={{ paddingBottom: "20px" }} key={id}>
                 <div className="card shadow-sm">
-                    <img src={src} className="card-img-top" style={{ height: "320px" }} alt="product"/>
+                    <Link to={linkId}> 
+                        <img src={src} className="card-img-top" style={{ height: "320px" }} alt="product"/>
+                    </Link>    
                     <div className="card-body">
-                        <h2 className="card-title">{name}</h2>
+                        <Link class="text-decoration-none" to={linkId}>
+                            <h2 className="card-title" style={{ color: "black" }}>{name}</h2>
+                        </Link>    
                         <div className="text-center">
-                            <h3 className="card-title pricing-card-title" style={{ color: "#ff7043" }}>$ {price}</h3>
+                            <Link class="text-decoration-none" to={linkId}>
+                                <h3 className="card-title pricing-card-title" style={{ color: "#ff7043" }}>$ {price}</h3>
+                            </Link>    
                             <Link className="btn btn-success" to={linkId}>Más información</Link>
                         </div>
                     </div>

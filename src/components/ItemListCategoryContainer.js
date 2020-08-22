@@ -7,11 +7,17 @@ function ItemListCategoryLayout({ id, category, src, name, price, linkId }) {
         <>
             <div className="col" style={{ paddingBottom: "20px" }} key={id} category={category}>
                 <div className="card shadow-sm">
-                    <img src={src} className="card-img-top" style={{ height: "320px" }} alt="product"/>
+                    <Link to={linkId}> 
+                        <img src={src} className="card-img-top" style={{ height: "320px" }} alt="product"/>
+                    </Link>    
                     <div className="card-body">
-                        <h2 className="card-title">{name}</h2>
+                        <Link class="text-decoration-none" to={linkId}>
+                            <h2 className="card-title" style={{ color: "black" }}>{name}</h2>
+                        </Link>    
                         <div className="text-center">
-                            <h3 className="card-title pricing-card-title" style={{ color: "#ff7043" }}>$ {price}</h3>
+                            <Link class="text-decoration-none" to={linkId}>
+                                <h3 className="card-title pricing-card-title" style={{ color: "#ff7043" }}>$ {price}</h3>
+                            </Link>    
                             <Link className="btn btn-success" to={linkId}>Más información</Link>
                         </div>
                     </div>
@@ -22,12 +28,12 @@ function ItemListCategoryLayout({ id, category, src, name, price, linkId }) {
 }
 
 function ItemListCategoryContainer({categoryId}) {
-    const [product, setProduct] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         console.log('App mounted')   
         Item().then(res => {
-            setProduct(res); 
+            setProducts(res); 
             setLoading(false);                           
         });
         return function cleanup() {
@@ -43,14 +49,14 @@ function ItemListCategoryContainer({categoryId}) {
             <div className="album py-5 bg-light">
                 <div className="container">
                     <div className="text-center row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">           
-                        {product.filter((p, idx) => p.categoryId === categoryId).map(product =>  (
+                        {products.filter((p, idx) => p.categoryId === categoryId).map(product =>  (
                             <ItemListCategoryLayout
-                            key={product.id}
-                            categoryId={product.categoryId}
-                            src={product.img}
-                            name={product.name}
-                            price={product.price}
-                            linkId={`/item/${product.id}`}
+                                key={product.id}
+                                categoryId={product.categoryId}
+                                src={product.img}
+                                name={product.name}
+                                price={product.price}
+                                linkId={`/item/${product.id}`}
                             />                
                         ))}
                     </div> 
