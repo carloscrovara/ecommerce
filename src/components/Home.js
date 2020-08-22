@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import ItemList from './ItemList';
+import ItemListHomeContainer from './ItemListHomeContainer';
 import Item from './Item';
 
 function Home({greeting}) {
@@ -9,6 +9,7 @@ function Home({greeting}) {
     }
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    
     useEffect(() => {
         console.log('App mounted')
         Item().then(res => {
@@ -29,11 +30,13 @@ function Home({greeting}) {
                         <p className="lead">Productos artesanales al mejor precio y calidad.</p>
                     </div>
                 </div>
-            </section>         
+            </section>
+
             { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando listado de productos destacados...</p> }
-            <ItemList products={products}/>
-            </>
-        )
+            
+            <ItemListHomeContainer products={products}/>
+        </>
+    )
 }
 
 export default Home;

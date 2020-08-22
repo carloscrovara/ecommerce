@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ItemListCategoryContainer from './ItemListCategoryContainer';
 import { useParams } from "react-router-dom";
 
-function ItemDetail() {      
+function ItemListCategory() {      
     const { categoryId } = useParams();
 
     useEffect(() => {
@@ -19,4 +19,4 @@ function ItemDetail() {
     )
 }
 
-export default ItemDetail;
+export default ItemListCategory;
