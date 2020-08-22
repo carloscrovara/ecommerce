@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ItemListLayout({ id, mainproduct, category, src, name, price, linkId }) {
+export default function ItemListLayout({ id, mainProduct, category, src, name, price, linkId }) {
     return (
         <>
-            <div className="col" style={{ paddingBottom: "20px" }} key={id} category={category} mainproduct={mainproduct}>
+            <div className="col" style={{ paddingBottom: "20px" }} key={id} category={category} mainproduct={mainProduct}>
                 <div className="card shadow-sm">
                     <Link to={linkId}> 
                         <img src={src} className="card-img-top" style={{ height: "320px" }} alt="product"/>

@@ -28,7 +28,7 @@ function ItemListCategoryContainer({categoryId}) {
                         {products.filter((p, idx) => p.categoryId === categoryId).map(product =>  (
                             <ItemListLayout
                                 key={product.id}
-                                categoryId={product.categoryId}
+                                category={product.categoryId}
                                 src={product.img}
                                 name={product.name}
                                 price={product.price}

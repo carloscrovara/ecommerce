@@ -7,11 +7,11 @@ export default function ItemListHomeContainer ({ products }) {
             <div className="album py-5 bg-light">
                 <div className="container">
                     <div className="text-center row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">           
-                        {products.filter((p, idx) => p.mainproduct === 'yes').map(product =>  (
+                        {products.filter((p, idx) => p.mainProduct === 'yes').map(product =>  (
                             <ItemListLayout
                                 key={product.id}
-                                mainproduct={product.mainproduct}
-                                categoryId={product.categoryId}
+                                mainproduct={product.mainProduct}
+                                category={product.categoryId}
                                 src={product.img}
                                 name={product.name}
                                 price={product.price}
