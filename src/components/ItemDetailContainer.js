@@ -6,16 +6,16 @@ function ItemDetailContainer({id}) {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     
-    useEffect(() => {
-        console.log('App mounted')        
+    useEffect(() => {      
         Item().then(res => {
             let filteredRes = res.filter( (p) => p.id === id )
             setProduct(filteredRes[0]); 
-            setLoading(false);                                        
-        });
-        return function cleanup() {
-            console.log("cleaned up");
-        };     
+            setLoading(false);
+            console.log('Mounted ItemDetailContainer')
+            return () => {
+                console.log('Dismounted ItemDetailContainer')
+            }                                                     
+        });     
     }, [id]);
     
     return (

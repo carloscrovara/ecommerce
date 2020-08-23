@@ -6,16 +6,16 @@ function ItemListCategoryContainer({categoryId}) {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     
-    useEffect(() => {
-        console.log('App mounted')   
+    useEffect(() => {  
         Item().then(res => {
             setProducts(res); 
-            setLoading(false);                           
-        });
-        return function cleanup() {
-            console.log("cleaned up");
-        };     
-    }, [categoryId]);
+            setLoading(false); 
+            console.log('Mounted ItemListCategoryContainer')
+            return () => {
+                console.log('Dismounted ItemListCategoryContainer')
+            }                                       
+        });    
+    }, []);
     
     return (
         <>

@@ -26,7 +26,7 @@ function About() {
                             Tortas Ugita es un emprendimiento de María Eugenia Recoulat Vaccaro, joven que realizó diversos cursos de pastelería y que disfruta de hacer tortas y tartas artesanales a pedido. 
                         </p>
                         <p className="lead">
-                            Este emprendimiento surgió en el año 2014 como un trabajo complementario de Eugenia, que también es docente de Lengua y Literatura en varios colegios.
+                            Este emprendimiento surgió en el año 2015 como un trabajo complementario de Eugenia, que también es docente de Lengua y Literatura en varios colegios.
                         </p>
                     </div>
                 </div>                               

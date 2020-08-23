@@ -6,11 +6,11 @@ function ItemDetail() {
     const { id } = useParams();
     
     useEffect(() => {
-        console.log('Received id to', id)
-        return function cleanup() {
-            console.log("cleaned up");
+        console.log('Mounted ItemDetail')
+        return () => {
+            console.log('Dismounted ItemDetail');
         };          
-    }, [id]);    
+    }, []);    
 
     return (
         <>

@@ -11,14 +11,14 @@ function Home({greeting}) {
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-        console.log('App mounted')
         Item().then(res => {
             setProducts(res); // Set state -> Render
-            setLoading(false); // Set state -> Render                     
-        });
-        return function cleanup() {
-            console.log("cleaned up");
-        };  
+            setLoading(false); // Set state -> Render
+            console.log('Mounted Home')
+            return () => {
+                console.log('Dismounted Home')
+            }                     
+        }); 
     }, []);
 
     return (

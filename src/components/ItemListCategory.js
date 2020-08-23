@@ -6,11 +6,11 @@ function ItemListCategory() {
     const { categoryId } = useParams();
 
     useEffect(() => {
-        console.log('Received categoryId to', categoryId) 
-        return function cleanup() {
-            console.log("cleaned up");
-        };        
-    }, [categoryId]);  
+        console.log('Mounted ItemListCategory')
+        return () => {
+            console.log('Dismounted ItemListCategory');
+        };       
+    }, []);  
     
     return (
         <>
