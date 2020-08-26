@@ -30,7 +30,7 @@ function ItemCount({ initial, min, max, onAdd }) {
                     <h6 className="title-attr"><small>Cantidad</small></h6>
                     <div className="row" style={{ display: 'flex', justifyContent: "center"}}>  
                         <button type="button" className="btn btn-light" onClick={restar}><ion-icon name="remove-outline"></ion-icon></button>
-                        <input className="form-control text-center" style={{ width: "60px"}} value={value} onChange={onValueChange} type="number"/>
+                        <input type="number" className="form-control text-center" style={{ width: "60px"}} value={value} onChange={onValueChange}/>
                         <button type="button" className="btn btn-light" onClick={sumar}><ion-icon name="add-outline"></ion-icon></button>
                     </div>
                     <hr />
