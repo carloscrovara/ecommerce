@@ -52,6 +52,7 @@ export default function CartForm() {
                             <label className="form-label" style={{ paddingTop: '5px'}}>Nombre</label>
                             <input type="text" className="form-control" id="firstName" placeholder="Nombre" required onInput={onNameChange}></input>
                         </div>
+                        
 
                         <div className="col-sm-6">
                             <label className="form-label" style={{ paddingTop: '5px'}}>Apellido</label>
