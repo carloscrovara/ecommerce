@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function ItemCount({ initial, min, max, onAdd }) {
+function ItemCount({ initial, min, max, onAdd}) {
     const [value, setValue] = useState(initial);
 
     function sumar() {
@@ -21,7 +21,7 @@ function ItemCount({ initial, min, max, onAdd }) {
 
     function onValueChange(event) {
         setValue(event.target.value)
-    }    
+    }
 
     return (
         <>

@@ -7,12 +7,14 @@ import About from './components/About';
 import ItemListCategory from './components/ItemListCategory';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
-import { CartContext } from './context/CartContext';
+//import { CartContext } from './context/CartContext';
+
+import { ListProvider } from './context/CartContext';
 
 function App() {
   return (
     <>
-        <CartContext.Provider value={[]}>    
+        <ListProvider value={[]}>    
           <BrowserRouter>
             <NavBar />
             <Switch>
@@ -34,7 +36,7 @@ function App() {
             </Switch>
             <Footer />
           </BrowserRouter>
-        </CartContext.Provider>
+        </ListProvider>
     </>
   )
 }

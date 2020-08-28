@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
+import { useListContext } from '../context/CartContext';
+
 
 export default function ItemDetailLayout ({ id, category, src, name, price, description, linkId }) {
+    const { addItem } = useListContext();     
     return (
         <>
             <div className="container text-center" style={{ marginTop: '30px', marginBottom: '30px'}} key={id}>
@@ -26,10 +29,8 @@ export default function ItemDetailLayout ({ id, category, src, name, price, desc
                                 <ItemCount 
                                     initial={1} 
                                     min={1} 
-                                    max={20} 
-                                    onAdd={function onAdd() {
-                                        console.log("Se agregó al carrito " + name)
-                                    }} 
+                                    max={20}
+                                    onAdd={() => addItem({name: name, price: price})}
                                 /> 
                             </div> 
                         </aside> 
