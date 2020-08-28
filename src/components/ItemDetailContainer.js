@@ -30,7 +30,7 @@ function ItemDetailContainer({id}) {
                 description={product.description}
                 category={product.categoryId}
                 linkId={`/categories/${product.categoryId}`}                   
-            /> }
+            />}
         </>
     )
 }

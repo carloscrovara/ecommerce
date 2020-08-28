@@ -34,7 +34,7 @@ function Home({greeting}) {
 
             { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando listado de productos destacados...</p> }
             
-            <ItemListHomeContainer products={products}/>
+            { !loading && <ItemListHomeContainer products={products}/> }
         </>
     )
 }

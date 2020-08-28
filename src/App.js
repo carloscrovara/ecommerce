@@ -7,31 +7,34 @@ import About from './components/About';
 import ItemListCategory from './components/ItemListCategory';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
+import { CartContext } from './context/CartContext';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <Home greeting="¡Bienvenidos a Tortas Ugita!" />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>            
-          <Route path="/item/:id">
-            <ItemDetail />
-          </Route>
-          <Route path="/categories/:categoryId">
-            <ItemListCategory />
-          </Route>          
-          <Route path="/cart">
-            <Cart />
-          </Route>                       
-        </Switch>
-        <Footer />
-      </BrowserRouter>
+        <CartContext.Provider value={[]}>    
+          <BrowserRouter>
+            <NavBar />
+            <Switch>
+              <Route exact path="/">
+                <Home greeting="¡Bienvenidos a Tortas Ugita!" />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>            
+              <Route path="/item/:id">
+                <ItemDetail />
+              </Route>
+              <Route path="/categories/:categoryId">
+                <ItemListCategory />
+              </Route>          
+              <Route path="/cart">
+                <Cart />
+              </Route>                       
+            </Switch>
+            <Footer />
+          </BrowserRouter>
+        </CartContext.Provider>
     </>
   )
 }

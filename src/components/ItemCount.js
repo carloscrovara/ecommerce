@@ -37,7 +37,7 @@ function ItemCount({ initial, min, max, onAdd }) {
                     <div className="section" style={{ paddingBottom: '20px', paddingTop: '20px' }}>
                         <button className="btn btn-success" onClick={onAdd}>
                             <ion-icon name="cart" style={{ marginRight: '20px' }} aria-hidden="true"></ion-icon> 
-                            Comprar {value}
+                            Agregar al carrito {value}
                         </button> 
                     </div>
                 </div>
