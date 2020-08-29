@@ -7,14 +7,12 @@ import About from './components/About';
 import ItemListCategory from './components/ItemListCategory';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
-//import { CartContext } from './context/CartContext';
-
 import { ListProvider } from './context/CartContext';
 
 function App() {
   return (
     <>
-        <ListProvider value={[]}>    
+        <ListProvider value={[]} initialValueItem={1} maxValueItem={30} minValueItem={1}>    
           <BrowserRouter>
             <NavBar />
             <Switch>

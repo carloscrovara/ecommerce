@@ -24,6 +24,7 @@ function ItemDetailContainer({id}) {
             
             { !loading && <ItemDetailLayout
                 key={product.id}
+                id={product.id}
                 src={product.img}
                 name={product.name}
                 price={product.price}

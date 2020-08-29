@@ -5,7 +5,7 @@ import { useListContext } from '../context/CartContext';
 
 
 export default function ItemDetailLayout ({ id, category, src, name, price, description, linkId }) {
-    const { addItem } = useListContext();     
+    const { addItem, itemQuantity } = useListContext();     
     return (
         <>
             <div className="container text-center" style={{ marginTop: '30px', marginBottom: '30px'}} key={id}>
@@ -27,10 +27,7 @@ export default function ItemDetailLayout ({ id, category, src, name, price, desc
                                 </dl>
                                 <hr />
                                 <ItemCount 
-                                    initial={1} 
-                                    min={1} 
-                                    max={20}
-                                    onAdd={() => addItem({name: name, price: price})}
+                                    onAdd={() => addItem({id: id, name: name, price: price, itemQuantity: itemQuantity })}
                                 /> 
                             </div> 
                         </aside> 

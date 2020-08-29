@@ -12,13 +12,13 @@ export default function CartBrief() {
                 </h4>
                 
                 <ul className="list-group mb-3">
-                    {list.map(i => (
-                    <li className="list-group-item d-flex justify-content-between lh-sm">
+                    {list.map((i, idx) => (
+                    <li key={idx} className="list-group-item d-flex justify-content-between lh-sm">
                         <div>
-                            <h6 className="my-0">{i.name}</h6>
-                            <small className="text-muted">Cantidad: 1</small>
+                            <h6 id={i.id} className="my-0">{i.name}</h6>
+                    <small className="text-muted">Cantidad: {i.itemQuantity}</small>
                         </div>
-                        <span className="text-muted">$ {i.price}</span>
+                        <span className="text-muted">$ {i.price * i.itemQuantity}</span>
                     </li>
                     ))}  
                 </ul>
