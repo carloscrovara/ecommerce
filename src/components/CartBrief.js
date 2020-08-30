@@ -2,9 +2,7 @@ import React from 'react';
 import { useListContext } from '../context/CartContext';
 
 export default function CartBrief() {
-    const { list, cleanList, quantity } = useListContext();
-
-    let totalPrice = 0;
+    const { list, cleanList, quantity, totalPrice } = useListContext();
 
     return (
         <>
@@ -25,10 +23,7 @@ export default function CartBrief() {
                     ))}
                     <li className="list-group-item d-flex justify-content-between">
                         <strong>Total</strong>
-                        {list.map ( (i) => (
-                            <strong>$ {totalPrice += i.price * i.itemQuantity }</strong>
-                        ))}
-
+                        <strong>$ {totalPrice}</strong>
                     </li>
                 </ul>
                 <button className="btn btn-success" style={{ marginBottom: '10px' }} onClick={cleanList}>Eliminar pedido</button>
