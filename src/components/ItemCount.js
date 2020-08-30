@@ -1,10 +1,8 @@
 import React from 'react';
 import { useListContext } from '../context/CartContext';
 
-function ItemCount({ onAdd}) {
-
+function ItemCount({ onAdd }) {
     const { sumar, restar, itemQuantity, onItemQuantityChange } = useListContext(); 
-
 
     return (
         <>
@@ -18,7 +16,7 @@ function ItemCount({ onAdd}) {
                     </div>
                     <hr />
                     <div className="section" style={{ paddingBottom: '20px', paddingTop: '20px' }}>
-                        <button className="btn btn-success" onClick={onAdd}>
+                        <button className="btn btn-success" onClick={onAdd} >
                             <ion-icon name="cart" style={{ marginRight: '20px' }} aria-hidden="true"></ion-icon> 
                             Agregar al carrito {itemQuantity}
                         </button> 

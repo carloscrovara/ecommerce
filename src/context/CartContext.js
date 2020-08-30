@@ -5,7 +5,6 @@ export const CartContext = React.createContext([]);
 export const useListContext = () => useContext(CartContext);
 
 export function ListProvider({ value, initialValueItem, maxValueItem, minValueItem, children }) {
-
   const [list, setList] = useState(value || []);
   const [itemQuantity, setItemQuantity] = useState(initialValueItem);
 
@@ -32,13 +31,23 @@ export function ListProvider({ value, initialValueItem, maxValueItem, minValueIt
   function addItem(newItem) {
       const l = [...list, newItem];
       setList(l);
+      setItemQuantity(initialValueItem);
   };
 
   function cleanList() {
-    setList([]);
+    setList([]); 
   }
 
-  return <CartContext.Provider value={{ list, addItem, quantity: list.length, cleanList, sumar, restar, itemQuantity, onItemQuantityChange }}>
+  function CounterCart () {
+    const total = list.reduce(
+      (prevValue, currentValue) => prevValue + currentValue.itemQuantity,
+      0
+    );
+    return <span className="badge badge-secondary badge-pill"> {total} </span>;
+  };
+  
+
+  return <CartContext.Provider value={{ list, addItem, cleanList, sumar, restar, itemQuantity, onItemQuantityChange, CounterCart }}>
     {children}
   </CartContext.Provider>
 } 

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
 import { useListContext } from '../context/CartContext';
 
-
 export default function ItemDetailLayout ({ id, category, src, name, price, description, linkId }) {
-    const { addItem, itemQuantity } = useListContext();     
+    const { addItem, itemQuantity } = useListContext();
+    
     return (
         <>
             <div className="container text-center" style={{ marginTop: '30px', marginBottom: '30px'}} key={id}>
@@ -27,7 +27,7 @@ export default function ItemDetailLayout ({ id, category, src, name, price, desc
                                 </dl>
                                 <hr />
                                 <ItemCount 
-                                    onAdd={() => addItem({id: id, name: name, price: price, itemQuantity: itemQuantity })}
+                                    onAdd={() => addItem({ id: id, name: name, price: price, itemQuantity: itemQuantity })}
                                 /> 
                             </div> 
                         </aside> 
