@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useListContext } from '../context/CartContext';
 
 function CartIcon() {
-    const { CounterCart } = useListContext();      
+    const { quantity } = useListContext();      
     
     return (
         <>
@@ -11,7 +11,7 @@ function CartIcon() {
                 <li>
                     <Link className="nav-link" to={`/cart`}>
                         <ion-icon name="cart" style={{ fontSize: 25 }}></ion-icon>
-                        <CounterCart />
+                        <span className="badge badge-secondary badge-pill"> {quantity} </span>
                     </Link>
                 </li>
             </ul>

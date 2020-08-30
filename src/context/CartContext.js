@@ -38,16 +38,14 @@ export function ListProvider({ value, initialValueItem, maxValueItem, minValueIt
     setList([]); 
   }
 
-  function CounterCart () {
-    const total = list.reduce(
-      (prevValue, currentValue) => prevValue + currentValue.itemQuantity,
-      0
-    );
-    return <span className="badge badge-secondary badge-pill"> {total} </span>;
-  };
+  const getCartTotal = (lista) => {
+    let total = 0;
+    lista.map ( (i) => total += i.itemQuantity )
+    return total
+} 
   
 
-  return <CartContext.Provider value={{ list, addItem, cleanList, sumar, restar, itemQuantity, onItemQuantityChange, CounterCart }}>
+  return <CartContext.Provider value={{ list, addItem, quantity: getCartTotal(list), cleanList, sumar, restar, itemQuantity, onItemQuantityChange }}>
     {children}
   </CartContext.Provider>
 } 

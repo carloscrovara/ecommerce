@@ -2,14 +2,16 @@ import React from 'react';
 import { useListContext } from '../context/CartContext';
 
 export default function CartBrief() {
-    const { list, cleanList, CounterCart } = useListContext();
+    const { list, cleanList, quantity } = useListContext();
+
+    let totalPrice = 0;
 
     return (
         <>
             <div className="col-md-5 col-lg-4 order-md-last">
                 <h4 className="d-flex justify-content-between align-items-center mb-3">
                     <span className="text-muted">Tu pedido</span>
-                    <CounterCart />
+                    <span className="badge badge-secondary badge-pill"> {quantity} </span>
                 </h4>
                 <ul className="list-group mb-3">
                     {list.map((i, idx) => ( 
@@ -23,7 +25,10 @@ export default function CartBrief() {
                     ))}
                     <li className="list-group-item d-flex justify-content-between">
                         <strong>Total</strong>
-                        <strong>$ </strong>
+                        {list.map ( (i) => (
+                            <strong>$ {totalPrice += i.price * i.itemQuantity }</strong>
+                        ))}
+
                     </li>
                 </ul>
                 <button className="btn btn-success" style={{ marginBottom: '10px' }} onClick={cleanList}>Eliminar pedido</button>
