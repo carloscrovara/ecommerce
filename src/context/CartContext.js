@@ -12,7 +12,7 @@ export function ListProvider({ value, initialValueItem, maxValueItem, minValueIt
       if(itemQuantity < maxValueItem){
         setItemQuantity(itemQuantity + 1);
       }else{
-          console.log('Máximo alcanzado');
+        console.log('Máximo alcanzado');
       }
   }
 
@@ -20,7 +20,7 @@ export function ListProvider({ value, initialValueItem, maxValueItem, minValueIt
       if(itemQuantity > minValueItem){
         setItemQuantity(itemQuantity - 1);
       }else{
-      console.log('Mínimo alcanzado');
+        console.log('Mínimo alcanzado');
       }        
   }
 
@@ -29,28 +29,28 @@ export function ListProvider({ value, initialValueItem, maxValueItem, minValueIt
   }  
 
   function addItem(newItem) {
-      const l = [...list, newItem];
-      setList(l);
-      setItemQuantity(initialValueItem);
+    const l = [...list, newItem];
+    setList(l);
+    setItemQuantity(initialValueItem);
   };
 
   function cleanList() {
     setList([]); 
   }
 
-  const getCartTotal = (lista) => {
+  function getCartTotal(lista) {
     let total = 0;
     lista.map ( (i) => total += i.itemQuantity )
     return total
-}
+  }
 
-const getCartTotalPrice = (lista) => {
+  function getCartTotalPrice(lista) {
     let total = 0;
     lista.map ( (i) => total += i.price * i.itemQuantity )
     return total
-} 
+  } 
   
-  return <CartContext.Provider value={{ list, addItem, quantity: getCartTotal(list), cleanList, sumar, restar, itemQuantity, onItemQuantityChange, totalPrice: getCartTotalPrice(list) }}>
+  return <CartContext.Provider value={{ list, addItem, quantity: getCartTotal(list), cleanList, sumar, restar, itemQuantity, onItemQuantityChange, totalPrice: getCartTotalPrice(list)  }}>
     {children}
   </CartContext.Provider>
 } 
