@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ItemListHomeContainer from './ItemListHomeContainer';
-import Item from './Item';
+import { getFirestore } from '..//firebase';
 
 function Home({greeting}) {
     const containerBienvenida = {
@@ -11,14 +11,26 @@ function Home({greeting}) {
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-        Item().then(res => {
-            setProducts(res); // Set state -> Render
-            setLoading(false); // Set state -> Render
+        //Firebase
+        const db = getFirestore();
+
+        const itemCollection = db.collection('items');
+        const priceItems = itemCollection.where('price', '>', 1000).limit(6);
+
+        priceItems.get().then((querySnapshot) => {
+            if(querySnapshot.size === 0) {
+                console.log('No existen items de mas de 1000 pesos')
+            }
+            setProducts(querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}))); 
+        }).catch((error) => {
+            console.log('Error searching items', error);
+        }).finally(() => {
+            setLoading(false); 
+        })              
             console.log('Mounted Home')
             return () => {
                 console.log('Dismounted Home')
-            }                     
-        }); 
+            }
     }, []);
 
     return (

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 
-
 function FieldForm({nameField, style, type, id, placeholder, onChange}) {
     return (
         <>

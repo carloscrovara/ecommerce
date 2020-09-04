@@ -1,21 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import Item from './Item';
 import ItemListLayout from './ItemListLayout';
+import { getFirestore } from '..//firebase';
+import { useParams } from "react-router-dom";
 
-function ItemListCategoryContainer({categoryId}) {
+function ItemListCategoryContainer() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    
-    useEffect(() => {  
-        Item().then(res => {
-            setProducts(res); 
-            setLoading(false); 
-            console.log('Mounted ItemListCategoryContainer')
-            return () => {
-                console.log('Dismounted ItemListCategoryContainer')
-            }                                       
-        });    
-    }, []);
+    const { categoryId = undefined } = useParams();   
+
+    useEffect(() => {
+    const db = getFirestore();
+
+    const itemCollection = db.collection('items');
+    const categoryItems = itemCollection.where('categoryId', '==', categoryId)
+
+    categoryItems.get().then((querySnapshot) => {
+        if(querySnapshot.size === 0) {
+            console.log('No results');
+        }
+        setProducts(querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}))); 
+    }).catch((error) => {
+        console.log('Error searching items', error);
+    }).finally(() => {
+        setLoading(false); 
+    })
+        console.log('Mounted ItemListCategoryContainer')
+        return () => {
+            console.log('Dismounted ItemListCategoryContainer')
+        }
+}, [categoryId]);    
     
     return (
         <>
@@ -25,7 +38,7 @@ function ItemListCategoryContainer({categoryId}) {
             { !loading && <div className="album py-5 bg-light">
                     <div className="container">
                         <div className="text-center row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">           
-                            {products.filter((p, idx) => p.categoryId === categoryId).map(product =>  (
+                            {products.map(product =>  (
                                 <ItemListLayout
                                     key={product.id}
                                     category={product.categoryId}
