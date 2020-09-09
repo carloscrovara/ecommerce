@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
+import { useListContext } from '../context/CartContext';
+import { getFirestore } from '..//firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 
-function FieldForm({nameField, style, type, id, placeholder, onChange}) {
+function FieldForm({inputLabel, nameField, style, type, id, placeholder, onChange}) {
     return (
         <>
             <div className="col-sm-6">
-                <label className="form-label" style={style}>{nameField}</label>
+                <label htmlFor={inputLabel} className="form-label" style={style}>{nameField}</label>
                 <input 
                     type={type} 
                     className="form-control" 
@@ -20,12 +24,13 @@ function FieldForm({nameField, style, type, id, placeholder, onChange}) {
 
 export default function CartForm() {
 
+    const {list, totalPrice} = useListContext();
+
     const [name, setName] = useState(null);
-    const [lastName, setLastName] = useState(null);
     const [phone, setPhone] = useState(null);
-    const [address, setAddress] = useState(null);
     const [email, setEmail] = useState(null);
-    const [emailConfirm, setEmailConfirm] = useState(null);    
+    const [emailConfirm, setEmailConfirm] = useState(null); 
+    const [comentarioPedido, setComentarioPedido] = useState(null);    
 
     const [sent, setSent] = useState(false);
 
@@ -37,17 +42,9 @@ export default function CartForm() {
         setName(event.target.value)
     }
 
-    function onLastNameChange(event) {
-        setLastName(event.target.value)
-    }
-    
     function onPhoneChange(event) {
         setPhone(event.target.value)
     }  
-    
-    function onAddressChange(event) {
-        setAddress(event.target.value)
-    }
 
     function onEmailChange(event) {
         setEmail(event.target.value)
@@ -55,11 +52,43 @@ export default function CartForm() {
 
     function onEmailConfirmChange(event) {
         setEmailConfirm(event.target.value)
-    }    
+    }   
 
-    function send() {
+    function onComentarioPedidoChange(event) {
+        setComentarioPedido(event.target.value)
+    }   
+
+    async function createOrder() {
         setSent(true);
-        console.log('La compra se realizó con éxito.')
+
+        //creo mis objetos buyers e items
+        const buyer = {
+            name,
+            phone,
+            email,
+            comentarioPedido,
+        }
+        const items = list.map( i => ({ id: i.id, name: i.name, quantity: i.itemQuantity, subtotalPrice: i.price * i.itemQuantity }) )
+
+        //creo nueva orden en colección de Firestore
+        const db = getFirestore();
+        const orders = db.collection('orders');
+        const newOrder = {
+            buyer, 
+            items,
+            date: firebase.firestore.Timestamp.fromDate(new Date()),
+            totalPrice,
+            estadoOrder: 'generada',
+        }
+
+        //Obtengo el ID de la order
+        try {
+        const {id} = await orders.add(newOrder);
+        alert("Compra realizada exitosamente. El ID de tu orden es " + id);
+        } catch(err) {
+            //seteamos feedback para el user
+            console.log('Error');
+        }
     }
     
     return (
@@ -67,22 +96,16 @@ export default function CartForm() {
             <form>
                 <div className="row g-3">
                     <FieldForm
-                        nameField="Nombre"
+                        inputLabel="inputName"
+                        nameField="Nombre y Apellido"
                         style={{ paddingTop: '5px'}}
                         type="text"
-                        id="firstName"
-                        placeholder="Nombre"
+                        id="name"
+                        placeholder="Nombre y Apellido"
                         onChange={onNameChange}
                     ></FieldForm>
                     <FieldForm
-                        nameField="Apellido"
-                        style={{ paddingTop: '5px'}}
-                        type="text"
-                        id="lastName"
-                        placeholder="Apellido"
-                        onChange={onLastNameChange}
-                    ></FieldForm>
-                    <FieldForm
+                        inputLabel="inputPhone"
                         nameField="Teléfono"
                         style={labelStyle}
                         type="number"
@@ -91,14 +114,7 @@ export default function CartForm() {
                         onChange={onPhoneChange}
                     ></FieldForm>                                                  
                     <FieldForm
-                        nameField="Domicilio"
-                        style={labelStyle}
-                        type="text"
-                        id="address"
-                        placeholder="Las Heras 2020 13 B"
-                        onChange={onAddressChange}
-                    ></FieldForm>
-                    <FieldForm
+                        inputLabel="inputEmail"
                         nameField="Email"
                         style={labelStyle}
                         type="email"
@@ -107,6 +123,7 @@ export default function CartForm() {
                         onChange={onEmailChange}
                     ></FieldForm> 
                     <FieldForm
+                        inputLabel="inputConfirmEmail"
                         nameField="Confirmar Email"
                         style={labelStyle}
                         type="email"
@@ -116,7 +133,7 @@ export default function CartForm() {
                     ></FieldForm>                                        
                     <div className="col-12">
                         <label className="form-label" style={labelStyle}>Comentario sobre el pedido<span className="text-muted"> (Opcional)</span></label>
-                        <textarea rows="2" className="col-12 form-control" id="comment" placeholder='Escribe tu comentario sobre el pedido.'/> 
+                        <textarea rows="2" className="col-12 form-control" id="comment" placeholder='Escribe tu comentario sobre el pedido.' onChange={onComentarioPedidoChange}/> 
                     </div>                        
                 </div>                                              
 
@@ -125,8 +142,8 @@ export default function CartForm() {
                 <button 
                     className="btn btn-primary btn-lg btn-block" 
                     type="submit" 
-                    disabled={ !name || !lastName || !phone || !address || !email || !emailConfirm || sent } 
-                    onClick={send}
+                    disabled={ !name || !phone || !email || !emailConfirm || sent } 
+                    onClick={createOrder}
                     style={{ marginBottom: '30px'}}
                 >
                     Realizar compra

@@ -30,8 +30,8 @@ function ItemDetailContainer() {
             return () => {
                 console.log('ItemDetailContainer')
             }
-    }, [id]);      
-
+    }, [id]); 
+    
     return (
         <>
             { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando detalle del producto...</p> }

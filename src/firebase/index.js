@@ -4,7 +4,7 @@ import 'firebase/firestore';
 const app = firebase.initializeApp({
     apiKey: "tuApiKey",
     authDomain: "tuauthDomain",
-    databaseURL: "tu databaseURL",
+    databaseURL: "tudatabaseURL",
     projectId: "tuProjectId",
     storageBucket: "tuStorageBucket",
     messagingSenderId: "tumessagingSenderId",

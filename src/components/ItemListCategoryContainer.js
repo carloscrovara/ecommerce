@@ -9,30 +9,30 @@ function ItemListCategoryContainer() {
     const { categoryId = undefined } = useParams();   
 
     useEffect(() => {
-    const db = getFirestore();
+        //Firebase
+        const db = getFirestore();
 
-    const itemCollection = db.collection('items');
-    const categoryItems = itemCollection.where('categoryId', '==', categoryId)
+        const itemCollection = db.collection('items');
+        const categoryItems = itemCollection.where('categoryId', '==', categoryId)
 
-    categoryItems.get().then((querySnapshot) => {
-        if(querySnapshot.size === 0) {
-            console.log('No results');
-        }
-        setProducts(querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}))); 
-    }).catch((error) => {
-        console.log('Error searching items', error);
-    }).finally(() => {
-        setLoading(false); 
-    })
-        console.log('Mounted ItemListCategoryContainer')
-        return () => {
-            console.log('Dismounted ItemListCategoryContainer')
-        }
-}, [categoryId]);    
+        categoryItems.get().then((querySnapshot) => {
+            if(querySnapshot.size === 0) {
+                console.log('No results');
+            }
+            setProducts(querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}))); 
+        }).catch((error) => {
+            console.log('Error searching items', error);
+        }).finally(() => {
+            setLoading(false); 
+        })
+            console.log('Mounted ItemListCategoryContainer')
+            return () => {
+                console.log('Dismounted ItemListCategoryContainer')
+            }
+    }, [categoryId]);    
     
     return (
         <>
-
             { loading && <p className="text-center" style={{marginTop: '10px', marginBottom: '10px'}}>Cargando listado de la categoría {categoryId}...</p> }
 
             { !loading && <div className="album py-5 bg-light">

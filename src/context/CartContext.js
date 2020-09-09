@@ -48,9 +48,15 @@ export function ListProvider({ value, initialValueItem, maxValueItem, minValueIt
     let total = 0;
     lista.map ( (i) => total += i.price * i.itemQuantity )
     return total
-  } 
+  }
   
-  return <CartContext.Provider value={{ list, addItem, quantity: getCartTotal(list), cleanList, sumar, restar, itemQuantity, onItemQuantityChange, totalPrice: getCartTotalPrice(list)  }}>
+  //Prueba
+  //function getCartSubtotalPrice(lista) {
+    //return lista.reduce((prev, next) => 
+    //(prev + (next.i.itemQuantity * next.i.price)), 0)
+  //}
+  
+  return <CartContext.Provider value={{ list, addItem, quantity: getCartTotal(list), cleanList, sumar, restar, itemQuantity, onItemQuantityChange, totalPrice: getCartTotalPrice(list) }}>
     {children}
   </CartContext.Provider>
 } 
