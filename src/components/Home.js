@@ -13,7 +13,6 @@ function Home({greeting}) {
     useEffect(() => {
         //Firebase
         const db = getFirestore();
-
         const itemCollection = db.collection('items');
         const priceItems = itemCollection.where('price', '>', 1000).limit(6);
 

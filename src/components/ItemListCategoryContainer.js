@@ -11,7 +11,6 @@ function ItemListCategoryContainer() {
     useEffect(() => {
         //Firebase
         const db = getFirestore();
-
         const itemCollection = db.collection('items');
         const categoryItems = itemCollection.where('categoryId', '==', categoryId)
 
