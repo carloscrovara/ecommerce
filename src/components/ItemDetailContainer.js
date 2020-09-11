@@ -39,7 +39,7 @@ function ItemDetailContainer() {
             
             { itemNotFound && <div className="container">
                     <div className="py-5 text-center">
-                        <h2>El producto no existe en nuestra Tienda de e-commerce.</h2>
+                        <h2>El producto no existe en nuestra Tienda de E-commerce.</h2>
                         <Link className="btn btn-success" to={`/`} style={{ marginBottom: '5px', marginTop: '25px'}}>Volver a Home para seleccionar otro producto</Link>                        
                     </div>
                 </div> 
