@@ -1,8 +1,8 @@
 import React, {useState}  from 'react';
 import CartBrief from './CartBrief';
-import { Link } from 'react-router-dom';
-import { useListContext } from '../context/CartContext';
-import { getFirestore } from '..//firebase';
+import {Link } from 'react-router-dom';
+import {useListContext} from '../context/CartContext';
+import {getFirestore} from '..//firebase';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -50,7 +50,7 @@ function Cart() {
     
     async function createOrder() {
         setSent(true);
-        //Creo mis objetos buyers e items
+        //Creo mis objetos buyer e items
         const buyer = { name, phone, email, comentarioPedido}
         const items = list.map( i => ({ id: i.id, name: i.name, quantity: i.itemQuantity, subtotalPrice: i.price * i.itemQuantity }) )
         //Creo nueva orden en colección de Firestore

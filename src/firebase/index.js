@@ -8,7 +8,7 @@ const app = firebase.initializeApp({
     projectId: "tuProjectId",
     storageBucket: "tuStorageBucket",
     messagingSenderId: "tumessagingSenderId",
-    appId: "tuAppId"
+    appId: "tuAppId",
 });
 
 export function getFirebase() {

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ItemListLayout from './ItemListLayout';
-import { getFirestore } from '..//firebase';
-import { useParams } from "react-router-dom";
+import {getFirestore} from '..//firebase';
+import {useParams} from "react-router-dom";
 
 function ItemListCategoryContainer() {
     const [products, setProducts] = useState([]);

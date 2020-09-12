@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import ItemListCategoryContainer from './ItemListCategoryContainer';
 
 function ItemListCategory() {      

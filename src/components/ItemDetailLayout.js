@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import ItemCount from './ItemCount';
-import { useListContext } from '../context/CartContext';
+import {useListContext} from '../context/CartContext';
 
 export default function ItemDetailLayout ({ id, category, src, name, price, description, linkId }) {
     const { addItem, itemQuantity } = useListContext();
@@ -33,9 +33,7 @@ export default function ItemDetailLayout ({ id, category, src, name, price, desc
                         </aside> 
                     </div> 
                 </div>
-
-                <Link className="btn btn-info" to={linkId} style={{ marginBottom: '5px', marginTop: '25px'}}>Volver al listado de {category}</Link>        
-            
+                <Link className="btn btn-info" to={linkId} style={{ marginBottom: '5px', marginTop: '25px'}}>Volver al listado de {category}</Link>
             </div>
         </>
     )

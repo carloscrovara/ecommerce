@@ -1,5 +1,5 @@
 import React from 'react';
-import { useListContext } from '../context/CartContext';
+import {useListContext} from '../context/CartContext';
 
 function ItemCount({ onAdd }) {
     const { sumar, restar, itemQuantity, onItemQuantityChange } = useListContext(); 

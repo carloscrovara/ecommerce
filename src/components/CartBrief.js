@@ -1,5 +1,5 @@
 import React from 'react';
-import { useListContext } from '../context/CartContext';
+import {useListContext} from '../context/CartContext';
 
 export default function CartBrief() {
     const { list, cleanList, quantity, totalPrice } = useListContext();

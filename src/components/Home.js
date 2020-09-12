@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ItemListHomeContainer from './ItemListHomeContainer';
-import { getFirestore } from '..//firebase';
+import {getFirestore} from '..//firebase';
 
 function Home({greeting}) {
     const containerBienvenida = {

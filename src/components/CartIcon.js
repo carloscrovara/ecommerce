@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useListContext } from '../context/CartContext';
+import {Link} from 'react-router-dom';
+import {useListContext} from '../context/CartContext';
 
 function CartIcon() {
     const { quantity } = useListContext();      
