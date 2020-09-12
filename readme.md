@@ -30,7 +30,7 @@ El E-commerce tiene un **NavBar** con el **logo** y links a los siguientes compo
 
 -  **Productos** (componente **ItemListCategory**): alojado en la ruta '/categories/:categoryId', donde se muestran los productos de la categoría Tortas o Tartas.
 
--  **IconCart**: es accesible durante toda la experiencia y tiene una indicación de la cantidad de items incluidos. Por ejemplo, si se agrega 1 torta bombón y 2 lemon pie, en el IconCart muestra 3. Al clickear, dirige al componente Cart.
+-  **IconCart**: es accesible durante toda la experiencia y tiene una indicación de la cantidad de items incluidos. Por ejemplo, si se agrega 1 torta bombón y 2 lemon pie, en el IconCart muestra 3. Al clickear, dirige al componente **Cart**.
 
 Al hacer click en un producto de un listado, navega a la **ruta '/item/:id'** (el ID del item es generado por Firestore) y permite ver su **descripción** (foto, precio, selector de cantidad y los botones para agregar al carrito y para volver al listado de la categoría al que pertenezca el producto).
 
