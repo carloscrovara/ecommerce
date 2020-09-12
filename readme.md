@@ -20,7 +20,7 @@ npm start
 
 ## Features, Componentes y Flow  
 
-![Alt Text](https://carloscrovara.com/tortasugita/codergithub.gif)
+![Alt Text](https://carloscrovara.com/tortasugita/github.gif)
 
 El E-commerce tiene un **NavBar** con el **logo** y links a los siguientes componentes:
 
