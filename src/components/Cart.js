@@ -35,13 +35,15 @@ function Cart() {
     function onNameChange(event) {setName(event.target.value)}
     function onPhoneChange(event) {setPhone(event.target.value)}  
     function onEmailChange(event) {setEmail(event.target.value)}
-    function onEmailConfirmChange(event) {setEmailConfirm(event.target.value)}
+    function onEmailConfirmChange(event) {
+        setEmailConfirm(event.target.value);
+        validateEmail();
+    }
     function onComentarioPedidoChange(event) {setComentarioPedido(event.target.value)}
 
-    //Prueba de validación de email
+    //Validación de email
     function validateEmail() {
         if(email !== emailConfirm) {
-            //console.log('El mail no es el mismo');
             setEmailError(true);
         }else {
             console.log('El mail está OK');
